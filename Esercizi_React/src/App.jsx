@@ -1,9 +1,10 @@
-import Welcome from './Welcome';
+import Counter from './Counter';
 
 function App() {
   return (
     <div>
-      <Welcome name="Christian" age={20} />
+      <h1>My Counter App</h1>
+      <Counter/>
     </div>
   );
 }
