@@ -1,10 +1,12 @@
-import UncontrolledLogin from './UncontrolledLogin';
+import Counter from './Counter';
+import Clock from './Clock';
 
 function App() {
   return (
     <div>
-      <h1>Uncontrolled Login</h1>
-      <UncontrolledLogin />
+      <h1>React Counter and Clock</h1>
+      <Counter/>
+      <Clock />
     </div>
   );
 }
