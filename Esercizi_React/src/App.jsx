@@ -1,11 +1,18 @@
-import Hello from './Hello';
+import InteractiveWelcome from './InteractiveWelcome';
+import Login from './Login';
 
 function App() {
+  const handleLogin = (formData) => {
+    console.log('Login data:', formData);
+  };
+
   return (
     <div>
-      <Hello />
-      <Hello /> {/* Possiamo usare il componente Hello più di una volta */}
-      {/* <Message /> // Si può anche renderizzare direttamente il compponente Message */}
+      <h1>Interactive Welcome</h1>
+      <InteractiveWelcome />
+
+      <h1>Login Form</h1>
+      <Login onLogin={handleLogin} />
     </div>
   );
 }
