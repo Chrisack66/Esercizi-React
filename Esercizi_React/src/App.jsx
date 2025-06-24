@@ -1,10 +1,10 @@
-import Counter from './Counter';
+import UncontrolledLogin from './UncontrolledLogin';
 
 function App() {
   return (
     <div>
-      <h1>My Counter App</h1>
-      <Counter/>
+      <h1>Uncontrolled Login</h1>
+      <UncontrolledLogin />
     </div>
   );
 }
