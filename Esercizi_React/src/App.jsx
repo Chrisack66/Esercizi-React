@@ -1,17 +1,11 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import MouseClicker from './MouseClicker'
+import Welcome from './Welcome';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <MouseClicker />
-    </>
-  )
+    <div>
+      <Welcome name="Christian" age={20} />
+    </div>
+  );
 }
 
-export default App
+export default App;
