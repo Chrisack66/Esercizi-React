@@ -1,20 +1,15 @@
-import InteractiveWelcome from './InteractiveWelcome';
-import Login from './Login';
+import { useState } from 'react'
+import AlertClock from './AlertClock'
+import './App.css'
 
 function App() {
-  const handleLogin = (formData) => {
-    console.log('Login data:', formData);
-  };
+  const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <h1>Interactive Welcome</h1>
-      <InteractiveWelcome />
-
-      <h1>Login Form</h1>
-      <Login onLogin={handleLogin} />
-    </div>
-  );
+    <>
+  <AlertClock />
+    </>
+  )
 }
 
-export default App;
+export default App
