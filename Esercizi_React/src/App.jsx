@@ -1,13 +1,14 @@
-import Counter from './Counter';
-import Clock from './Clock';
+import { useState } from 'react';
+import './App.css';
+import HelloWorld from './hello_world.jsx';
 
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
-    <div>
-      <h1>React Counter and Clock</h1>
-      <Counter/>
-      <Clock />
-    </div>
+    <>
+      <HelloWorld />
+    </>
   );
 }
 
