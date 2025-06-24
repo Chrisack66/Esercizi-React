@@ -1,11 +1,9 @@
-import Hello from './Hello';
+import Welcome from './Welcome';
 
 function App() {
   return (
     <div>
-      <Hello />
-      <Hello /> {/* Possiamo usare il componente Hello più di una volta */}
-      {/* <Message /> // Si può anche renderizzare direttamente il compponente Message */}
+      <Welcome name="John" age={30} />
     </div>
   );
 }
