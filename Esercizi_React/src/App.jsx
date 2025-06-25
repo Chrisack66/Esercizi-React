@@ -1,18 +1,14 @@
-import InteractiveWelcome from './InteractiveWelcome';
-import Login from './Login';
+import React from 'react';
+import FocusableInput from './FocusableInput';
+import EffectOnMount from './EffectOnMount';
 
 function App() {
-  const handleLogin = (formData) => {
-    console.log('Login data:', formData);
-  };
-
   return (
     <div>
-      <h1>Interactive Welcome</h1>
-      <InteractiveWelcome />
+      <h1>Focusable Input</h1>
+      <FocusableInput />
 
-      <h1>Login Form</h1>
-      <Login onLogin={handleLogin} />
+      <EffectOnMount />
     </div>
   );
 }
