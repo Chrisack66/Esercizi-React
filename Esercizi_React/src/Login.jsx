@@ -1,69 +1,53 @@
 import { useState } from 'react';
 
 function Login({ onLogin }) {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    remember: false,
-  });
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [remember, setRemember] = useState(false);
 
-  function handleChange(e) {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
-  }
+  const isFormValid = username && password;
+  const loginButtonColor = password.length < 8 ? 'red' : 'green';
 
-  function handleLogin(e) {
-    e.preventDefault(); // previene il comportamento predefinito del form
-    onLogin(formData);  // stampa lo stato al click
+  function handleSubmit(e) {
+    e.preventDefault();
+    onLogin({ username, password, remember });
   }
 
   function handleReset() {
-    setFormData({ username: '', password: '', remember: false });
+    setUsername('');
+    setPassword('');
+    setRemember(false);
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <div>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={e => setUsername(e.target.value)}
+      /><br />
+
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+      /><br />
+
+      <label>
         <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
+          type="checkbox"
+          checked={remember}
+          onChange={e => setRemember(e.target.checked)}
         />
-      </div>
+        Remember me
+      </label><br />
 
-      <div>
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            name="remember"
-            checked={formData.remember}
-            onChange={handleChange}
-          />
-          Remember me
-        </label>
-      </div>
-
-      <button type="submit" disabled={!formData.username || !formData.password}>
+      <button type="submit" disabled={!isFormValid} style={{ backgroundColor: loginButtonColor }}>
         Login
       </button>
-      <button type="button" onClick={handleReset}>
-        Reset
-      </button>
+      <button type="button" onClick={handleReset}>Reset</button>
     </form>
   );
 }

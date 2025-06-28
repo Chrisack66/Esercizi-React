@@ -1,17 +1,22 @@
-import InteractiveWelcome from './InteractiveWelcome';
+import Welcome from './Welcome';
+import CounterDisplay from './CounterDisplay';
 import Login from './Login';
+import { useState } from 'react';
 
 function App() {
-  const handleLogin = (formData) => {
-    console.log('Login data:', formData);
-  };
+  const [count, setCount] = useState(0);
+
+  function handleLogin(data) {
+    console.log('Login Data:', data);
+  }
 
   return (
-    <div>
-      <h1>Interactive Welcome</h1>
-      <InteractiveWelcome />
+    <div style={{ padding: '1rem' }}>
+      <Welcome name="Guest" />
+      <CounterDisplay count={count} />
+      <button onClick={() => setCount(count + 1)}>Incrementa</button>
 
-      <h1>Login Form</h1>
+      <h3>Login Form</h3>
       <Login onLogin={handleLogin} />
     </div>
   );
