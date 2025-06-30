@@ -1,17 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import MouseClicker from './MouseClicker'
+import Container from './Container';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <MouseClicker />
-    </>
-  )
+    <div style={{ padding: '2rem' }}>
+      <Container title="Titolo contenitore">
+        <ul>
+          <li>Item 1</li>
+          <li>Item 2</li>
+        </ul>
+      </Container>
+
+    </div>
+  );
 }
 
-export default App
+export default App;
