@@ -1,16 +1,24 @@
-import Container from './Container';
+import { useState } from 'react';
+import Hello from './Hello';
+import LanguageContext from './LanguageContext';
 
 function App() {
-  return (
-    <div style={{ padding: '2rem' }}>
-      <Container title="Titolo contenitore">
-        <ul>
-          <li>Item 1</li>
-          <li>Item 2</li>
-        </ul>
-      </Container>
+  const [language, setLanguage] = useState("en");
 
-    </div>
+  return (
+    <LanguageContext.Provider value={language}>
+      <div>
+        <label>
+          Select language:
+          <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+            <option value="en">English</option>
+            <option value="it">Italiano</option>
+          </select>
+        </label>
+
+        <Hello />
+      </div>
+    </LanguageContext.Provider>
   );
 }
 
