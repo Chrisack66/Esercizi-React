@@ -1,29 +1,28 @@
-import React from 'react';
-import useCounter from './useCounter';
-import FilteredList from './FilteredList';
-
-const sampleList = [
-  { id: 1, name: 'Alice', age: 17 },
-  { id: 2, name: 'Bob', age: 25 },
-  { id: 3, name: 'Charlie', age: 30 },
-  { id: 4, name: 'Daisy', age: 16 },
-];
+import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
+import Welcome from "./Welcome";
+import Counter from "./Counter";
+import ShowGithubUser from "./ShowGithubUser";
+import GithubUserList from "./GithubUserList";
 
 function App() {
-  const { count, increment, decrement, reset } = useCounter(0);
-
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>Counter: {count}</h2>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
-      <button onClick={reset}>Reset</button>
+    <BrowserRouter>
+      <nav style={{ display: "flex", gap: "1rem" }}>
+        <Link to="/">Home</Link>
+        <Link to="/counter">Counter</Link>
+        <Link to="/users">GitHub Users</Link>
+      </nav>
 
-      <hr />
-
-      <h2>Over 18 List</h2>
-      <FilteredList items={sampleList} />
-    </div>
+      <Routes>
+        <Route path="/" element={<Welcome name="Guest" />} />
+        <Route path="/counter" element={<Counter />} />
+        <Route path="/users" element={<GithubUserList />}>
+          <Route index element={<p>Add a user and select it</p>} />
+          <Route path=":username" element={<ShowGithubUser />} />
+        </Route>
+        <Route path="*" element={<p>Not Found</p>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
